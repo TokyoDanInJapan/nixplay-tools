@@ -1,0 +1,18 @@
+# Credentials
+.env
+
+# Downloaded photos/videos and export metadata
+nixplay_export/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Working files
+prune_plan.json
+prune_log.json
+.coverage

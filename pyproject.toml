@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nixplay-tools"
+version = "0.1.0"
+description = "Export and prune a Nixplay photo frame library via its unofficial web API"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.28",
+    "Pillow>=9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov>=4",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+nixplay-export = "nixplay_export:main"
+nixplay-prune = "nixplay_prune:main"
+nixplay-playlists = "nixplay_playlists:main"
+nixplay-verify = "nixplay_verify:main"
+nixplay-sort = "nixplay_sort:main"
+
+[project.urls]
+Repository = "https://github.com/TokyoDanInJapan/nixplay-tools"
+
+[tool.setuptools]
+py-modules = ["nixplay_api", "nixplay_export", "nixplay_prune", "nixplay_playlists", "nixplay_verify", "nixplay_sort"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = [
+    "SIM105",  # try/except/pass is clearer than contextlib.suppress here
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+include = ["nixplay_*.py"]
